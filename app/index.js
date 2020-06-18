@@ -17,13 +17,13 @@ mongoose.connection.on('error', () => console.log('连接失败'))
 app.use(
   error({
     postFormat: (e, { stack, ...rest }) =>
-      process.env.NODE_ENV === 'production' ? rest : { stack, ...rest }
+      process.env.NODE_ENV === 'production' ? rest : { stack, ...rest },
   })
 )
 app.use(bodyparser())
 app.use(parameter(app))
 routing(app)
 
-app.listen(3000, ctx => {
+app.listen(3000, (ctx) => {
   console.log('程序跑起来了')
 })
